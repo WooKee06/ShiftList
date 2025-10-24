@@ -1,0 +1,66 @@
+.TitileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+  > span {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+
+    color: #ffffff;
+  }
+
+  > small {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+
+    color: #ffffff;
+
+    position: relative;
+    width: max-content;
+
+    > button {
+      background: rgba(175, 201, 232, 0.02);
+      border: 0.3px solid rgba(255, 255, 255, 0.19);
+      backdrop-filter: blur(1.8px);
+      border-radius: 15px;
+
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      padding: 6px 9px;
+
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 11px;
+
+      color: #ffffff;
+
+      position: absolute;
+      top: -20px;
+      right: -63px;
+    }
+  }
+
+  hr {
+    width: 90%;
+    opacity: 0.2;
+    margin-top: 20px;
+  }
+}

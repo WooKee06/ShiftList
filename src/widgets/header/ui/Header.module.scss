@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .userImg {
+    width: 56px;
+    height: 56px;
+    border-radius: 50px;
+    background-color: #fff;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+      display: flex;
+      border-radius: 50px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20.85px);
+    }
+  }
+}
