@@ -9,7 +9,7 @@ interface ApplicationsState {
   fetchApplications: () => Promise<void>;
 }
 
-export const useCarsStore = create<ApplicationsState>((set, get) => ({
+export const useCarsStore = create<ApplicationsState>((set, _) => ({
   shifts: [],
   loading: false,
   error: null,
