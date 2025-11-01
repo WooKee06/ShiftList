@@ -12,10 +12,13 @@ body {
   overflow-x: hidden;
 }
 
+* {
+  font-family: "Montserrat";
+}
+
 .wrapper {
   width: 90vw;
-  margin: 30px auto;
-  margin-top: 120px;
+  margin: 120px auto;
 }
 
 .swiper {
@@ -28,4 +31,17 @@ body {
   z-index: 1;
   display: block;
   width: 100%;
+}
+
+.Toastify__toast {
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  max-width: 90%;
+  margin: 10px;
+}
+
+.Toastify__toast-theme--dark {
+  background-color: #101016;
 }
