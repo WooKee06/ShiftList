@@ -16,7 +16,12 @@ const links = [
 
 const NavigateBar = () => {
   const pathname = useLocation().pathname;
-  const activeIndex = links.findIndex((link) => link.to === pathname);
+
+  let activeIndex = links?.findIndex((link) => link.to === pathname);
+
+  if (activeIndex < 0) {
+    activeIndex = 2;
+  }
 
   return (
     <div className={s.NavigateBar}>

@@ -1,9 +1,9 @@
-import TitileSection from "../../widgets/TitileSection/ui/TitileSection";
+import Operations from "../../widgets/Operations/ui/Operations";
 
 const ShiftsPage = () => {
   return (
     <>
-      <TitileSection />
+      <Operations />
     </>
   );
 };

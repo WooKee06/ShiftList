@@ -9,6 +9,7 @@ import SearchPage from "./pages/SearchPage";
 import ShiftsPage from "./pages/ShiftsPage";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { ToastContainer } from "react-toastify";
+import OperationPage from "./pages/OperationPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shifts" element={<ShiftsPage />} />
+            <Route path="/shifts/:operation" element={<OperationPage />} />
             <Route path="/profile" element={<ProfilehPage />} />
             <Route path="/search" element={<SearchPage />} />
           </Routes>
