@@ -5,7 +5,7 @@ const TitileSection = () => {
     <div className={s.TitileSection}>
       <span>Добро пожаловать, Вячеслав!</span>
       <small>
-        Ежедневное собрание в 22:30{" "}
+        Ежедневное собрание в 22:30
         <button>
           Напомнить
           <svg
