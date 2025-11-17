@@ -1,18 +1,46 @@
 .modal {
   width: 100%;
   max-width: 500px;
-  height: 50%;
-  background: #131319;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  min-height: 50%;
+  height: auto;
+
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 5px;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 100;
+
+  background: rgba(11, 10, 16, 0.73);
+  backdrop-filter: blur(4.4px);
+  border-radius: 20px 20px 36px 36px;
+
+  span,
+  label {
+    opacity: 0.5;
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  background-image: url();
 }
 
 .header {
@@ -51,7 +79,7 @@
 }
 
 .selectWrapper {
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   flex-direction: column;
 
@@ -64,7 +92,9 @@
     padding: 10px;
     border-radius: 8px;
     border: none;
-    background: #333;
+    background: #141423;
+    border: 1px solid rgba(16, 50, 88, 0.13);
+    border-radius: 10px;
     color: white;
     font-size: 16px;
   }
@@ -85,7 +115,7 @@ h3 {
   }
 
   .save {
-    background: #00ff88;
+    background: linear-gradient(90deg, #63f1a5 0%, #5cf6a1 100%);
     padding: 10px 20px;
     border: none;
     border-radius: 8px;

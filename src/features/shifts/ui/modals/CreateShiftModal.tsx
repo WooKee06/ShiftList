@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import s from "./CreateShiftModal.module.scss";
 import { toast } from "react-toastify";
+import { UserListApi } from "../../../../widgets/Search/api/UserListApi";
 
 interface CreateShiftModalProps {
   isOpen: boolean;
   onClose: () => void;
   userName: string;
   currentOperation: string;
+  user: any;
   onSave: (operation: string, alley?: string) => void;
 }
 
@@ -41,6 +43,7 @@ const CreateShiftModal: React.FC<CreateShiftModalProps> = ({
   isOpen,
   onClose,
   userName,
+  user,
   currentOperation,
   onSave,
 }) => {
@@ -53,18 +56,28 @@ const CreateShiftModal: React.FC<CreateShiftModalProps> = ({
     }
   }, [selectedOperation]);
 
-  const handleSave = () => {
-    onSave(
-      selectedOperation,
-      selectedOperation === "Аллея" ? selectedAlley : undefined
-    );
-    onClose();
+  const handleSave = async () => {
+    try {
+      await UserListApi.addShift(user.id, {
+        operation: selectedOperation,
+        date: new Date().toISOString(),
+        status: "active",
+      });
 
-    toast.success(
-      `${userName} теперь стоит на операции: ${selectedOperation}${
-        selectedOperation === "Аллея" ? ` (${selectedAlley})` : ""
-      }`
-    );
+      toast.success(
+        `${userName} теперь стоит на операции: ${selectedOperation}${
+          selectedOperation === "Аллея" ? ` (${selectedAlley})` : ""
+        }`
+      );
+
+      onSave(
+        selectedOperation,
+        selectedOperation === "Аллея" ? selectedAlley : undefined
+      );
+      onClose();
+    } catch (err) {
+      toast.error("Не удалось добавить на операцию");
+    }
   };
 
   return (
@@ -87,8 +100,15 @@ const CreateShiftModal: React.FC<CreateShiftModalProps> = ({
               exit={{ y: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
-              <h3>Пользователь: {userName}</h3>
-              <p>Текущая операция: {currentOperation || "Нет операции"}</p>
+              <img
+                src="https://yt3.googleusercontent.com/ytc/AIdro_k-fcOB9HCy2pqHpDyRMfxlKdp0dQNS_WHMjqH9MvGcdfs=s900-c-k-c0x00ffffff-no-rj"
+                alt=""
+                className={s.img}
+              />
+              <span>Пользователь:</span>
+              <h3> {userName}</h3>
+              <span>На какую операцию записан(а):</span>
+              <h3> {currentOperation || "Нет операции"}</h3>
 
               <div className={s.selectWrapper}>
                 <label htmlFor="operationSelect">Выберите операцию:</label>

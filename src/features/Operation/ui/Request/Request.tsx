@@ -3,8 +3,6 @@ import s from "./Request.module.scss";
 const Request = () => {
   return (
     <div className={s.request}>
-      {/* <h3>Список заявок</h3>
-      <p>Здесь будут заявки на смену.</p> */}
       <ul className={s.requestList}>
         <li className={s.requestitem}>
           <div className={s.user}>

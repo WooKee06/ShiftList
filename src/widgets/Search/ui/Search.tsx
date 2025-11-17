@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import s from "./Search.module.scss";
 import { UserListStore } from "../model/UserListStore";
 import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css"; // не забудь стили
+import "react-loading-skeleton/dist/skeleton.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import CreateShiftModal from "../../../features/shifts/ui/modals/CreateShiftModal";
@@ -15,7 +15,7 @@ const Search = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   const filteredUsers = users.users.filter((user) =>
     user.firstName.toLowerCase().includes(search.toLowerCase())
@@ -120,6 +120,7 @@ const Search = () => {
       </ul>
 
       <CreateShiftModal
+        user={selectedUser}
         userName={selectedUser?.firstName || ""}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
