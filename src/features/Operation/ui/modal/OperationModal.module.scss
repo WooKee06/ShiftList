@@ -71,7 +71,13 @@
   overflow: hidden;
   overflow-y: scroll;
 
-  padding-right: 10px;
+  padding-right: 5px;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 
   &::-webkit-scrollbar {
     width: 10px;
@@ -155,5 +161,21 @@
         opacity: 0.5;
       }
     }
+  }
+}
+
+.activeUsers {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 10px;
+
+  span {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .userInfo {
+    border: 1px solid #63f1a590;
   }
 }

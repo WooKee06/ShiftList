@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import { motion } from "framer-motion";
-import s from "./OperationLists.module.scss";
-import Request from "../../../features/Operation/ui/Request/Request";
-import Lists from "../../../features/Operation/ui/Lists/Lists";
 
-const OperationLists = () => {
+import s from "./OperationLists.module.scss";
+import Lists from "../../../features/Operation/ui/Lists/Lists";
+import Request from "../../../features/Operation/ui/Request/Request";
+import AlleyLists from "../../../features/Operation/ui/Lists/alley/AlleyLists";
+
+interface OperationListsProps {
+  pageType: string;
+}
+
+const OperationLists: React.FC<OperationListsProps> = ({ pageType }) => {
   const [activeTab, setActiveTab] = useState<"requests" | "lists">("requests");
 
+  const listComponents: Record<string, JSX.Element> = {
+    accepting: <Lists />,
+    priemka: <Lists />,
+    alley: <AlleyLists />,
+    placement: <Lists />,
+  };
+
+  const ListComponent = listComponents[pageType] || <Lists />;
+
   return (
-    <div className={s.OperationLists}>
+    <>
       <div className={s.tabs}>
         {["requests", "lists"].map((tab) => (
           <button
@@ -27,30 +42,29 @@ const OperationLists = () => {
           </button>
         ))}
       </div>
-      <div className={s.content}>
-        {activeTab === "requests" ? (
-          <motion.div
-            key="requests"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Request />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="lists"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Lists />
-          </motion.div>
-        )}
-      </div>
-    </div>
+
+      {activeTab === "requests" ? (
+        <motion.div
+          key="requests"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Request title={pageType} />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="lists"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {ListComponent}
+        </motion.div>
+      )}
+    </>
   );
 };
 

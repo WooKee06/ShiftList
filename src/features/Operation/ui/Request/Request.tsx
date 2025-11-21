@@ -1,6 +1,7 @@
 import s from "./Request.module.scss";
 
-const Request = () => {
+const Request = ({ title }: any) => {
+  console.log(title);
   return (
     <div className={s.request}>
       <ul className={s.requestList}>
